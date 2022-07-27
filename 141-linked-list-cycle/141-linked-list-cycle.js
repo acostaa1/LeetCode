@@ -31,16 +31,35 @@ class Node {
 //     return false;
 // };
 
-function hasCycle (head) {
-  let curr = head;
+// function hasCycle (head) {
+//   let curr = head;
 
-  while (curr) {
-    if (curr.visited) {
+//   while (curr) {
+//     if (curr.visited) {
+//       return true;
+//     } else {
+//       curr.visited = true;
+//     }
+//     curr = curr.next;
+//   }
+
+//   return false;
+// }
+
+function hasCycle (head) {
+  if (!head || !head.next) {
+    return false;
+  }
+  
+  let slow = head;
+  let fast = head.next;
+  
+  while (fast && fast.next) {
+    if (fast === slow) {
       return true;
-    } else {
-      curr.visited = true;
     }
-    curr = curr.next;
+    slow = slow.next;
+    fast = fast.next.next;
   }
 
   return false;
