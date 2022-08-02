@@ -11,7 +11,7 @@ const groupAnagrams = (arr) => {
   for (let word of arr) {
     let sorted = word.split('').sort().join('')
     if (!(sorted in store)) {
-      store[sorted] = [sorted] || []; //[sorted] || []
+      store[sorted] = [sorted]; //[sorted] || []
     }
     store[sorted].push(word);//store[sorted].push(word)
   }
